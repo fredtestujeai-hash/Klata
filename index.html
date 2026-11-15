@@ -703,6 +703,7 @@
       <div class="eyebrow">Jak działa plan</div>
       <p class="small muted">Trenujesz <b class="ink">codziennie</b>, ale każdy dzień akcentuje inną część klatki: objętość, górę, tempo, dół, środek z tricepsem, siłę i regenerację. Po pompkach jest blok <b style="color:var(--gold)">brzucha na stojąco</b>, część ćwiczeń z hantlem, a na koniec <b style="color:var(--kb)">kettlebell</b>. Oba bloki zmieniają się co dzień.</p>
       <p class="small muted">Pompki liczę z <b style="color:var(--teal)">poziomu pompek</b>, brzuch z <b style="color:var(--gold)">poziomu brzucha</b>, kettlebell z <b style="color:var(--kb)">poziomu kettlebell</b>. Po każdym treningu każdy z nich idzie w górę, stoi albo spada, zależnie od wykonania. Co 4. tydzień jest lżejszy. Co 2 tygodnie przypominam o teście maksymalnym.</p>
+      <p class="small muted">Cel to <b class="ink">masa mięśniowa</b>: serie w zakresie mniej więcej 8–20 powtórzeń, przerwy 45–90 s przy pompkach, 25–30 s przy brzuchu. Cały trening mieści się w <b class="ink">godzinie z rozgrzewką</b>. Jeśli plan wychodzi dłuższy, ucinam ostatnie serie w bloku, który najbardziej przekracza swój czas.</p>
       <p class="small muted">Ciężar hantla i kettla dobierz tak, żeby ostatnie powtórzenia serii były trudne, ale czyste. Gdy robi się za lekko, weź cięższy i cofnij poziom o kilka oczek w Ustawieniach.</p>
       <p class="small muted">Możesz <b class="ink">zakończyć trening w dowolnym momencie</b> i zapisać to, co zrobiłeś. Wtedy poziom nie rośnie, ale też nie karzę Cię za niedokończone serie: liczę tylko te zaliczone.</p>
     </div>
@@ -765,6 +766,10 @@
         <div class="stepper"><button type="button" data-set="absLevel" data-d="-1">−</button><span class="val" id="vAbs">—</span><button type="button" data-set="absLevel" data-d="1">+</button></div></div>
       <div class="srow"><div class="l">Poziom kettlebell<small>Bazowa liczba powtórzeń w serii.</small></div>
         <div class="stepper"><button type="button" data-set="kbLevel" data-d="-1">−</button><span class="val" id="vKb">—</span><button type="button" data-set="kbLevel" data-d="1">+</button></div></div>
+      <div class="srow"><div class="l">Kettlebell<small>Po zmianie ciężaru przeliczam poziom kettlebell.</small></div>
+        <div class="stepper"><button type="button" data-set="kbKg" data-d="-2">−</button><span class="val" id="vKbKg">—</span><button type="button" data-set="kbKg" data-d="2">+</button></div></div>
+      <div class="srow"><div class="l">Hantel<small>Ciężar do ćwiczeń brzucha.</small></div>
+        <div class="stepper"><button type="button" data-set="dbKg" data-d="-2.5">−</button><span class="val" id="vDbKg">—</span><button type="button" data-set="dbKg" data-d="2.5">+</button></div></div>
       <button class="btn gold sm" id="pfRetest" style="margin-top:8px">Powtórz test maksymalny</button>
     </div>
 
@@ -856,7 +861,7 @@ const EX = {
   sideCrunch:{cat:'abs',name:'Kolano bokiem do łokcia',f:0.9,side:true,tag:'skośne boczne',m:{obl:2},cue:'Dłonie za głową. Unieś kolano bokiem i skłoń tułów w tę samą stronę, łokieć do kolana. Biodra stabilne, ruch z talii.'},
   woodchop:{cat:'abs',name:'Drwal',f:0.8,side:true,tag:'rotacja, skośne',m:{obl:2,absU:1},cue:'Dłonie razem, możesz trzymać butelkę wody. Z góry nad jednym barkiem tnij po skosie w dół do przeciwnego kolana, lekko uginając nogi. Ruch z tułowia, powrót wolniej.'},
   bicycle:{cat:'abs',name:'Rowerek na stojąco',f:1.6,side:false,tag:'skośne + kondycja',m:{obl:2,absL:1},cue:'Kolano do przeciwnego łokcia, płynnie i szybciej, naprzemiennie bez pauzy. Plecy proste, kolano wysoko. Liczysz oba boki razem.'},
-  sideBend:{cat:'abs',name:'Skłony boczne',f:1.0,side:true,tag:'skośne, talia',m:{obl:2},cue:'Ciężar w jednej ręce: hantel, butelka albo plecak. Druga dłoń za głową. Skłon w stronę ciężaru i powrót siłą przeciwnego boku, bez skrętu.'},
+  sideBend:{cat:'abs',name:'Skłony boczne',f:1.0,side:true,eq:'db',tag:'skośne, talia · hantel',m:{obl:2},cue:'Hantel w jednej ręce, ramię luźno wzdłuż ciała. Druga dłoń za głową. Skłon w stronę ciężaru i powrót siłą przeciwnego boku, bez skrętu.'},
   twist:{cat:'abs',name:'Skręty tułowia',f:1.8,side:false,tag:'rotacja',m:{obl:2,absU:1},cue:'Lekki rozkrok, dłonie złączone przed klatką. Skręcaj tułów w prawo i w lewo, biodra zostają przodem. Brzuch napięty, tempo kontrolowane. Liczysz oba boki razem.'},
   kneeHold:{cat:'abs',name:'Kolano do klatki z przytrzymaniem',f:0.6,side:true,tag:'dolna część brzucha',m:{absL:2,absU:1},cue:'Unieś kolano jak najwyżej, dociągnij je dłońmi do klatki i przytrzymaj 2 sekundy, mocno napinając brzuch. Opuść powoli.'},
   toeTouch:{cat:'abs',name:'Wymach nogi do dłoni',f:0.9,side:true,tag:'prosty brzucha',m:{absL:2,absU:1},cue:'Prosta noga wymachem w górę, przeciwna ręka sięga do palców stopy. Tułów lekko w przód, plecy proste, naprzemiennie.'},
@@ -867,18 +872,18 @@ const EX = {
   dbSuitcase:{cat:'abs',name:'Marsz z hantlem w ręce',f:0.9,side:true,eq:'db',alt:'kneeHold',tag:'skośne, stabilizacja · hantel',m:{obl:2,absL:1},cue:'Ciężki hantel w jednej ręce przy boku, druga dłoń na biodrze. Unoś kolana na zmianę do wysokości bioder i nie przechylaj się w stronę ciężaru. Barki poziomo. Po serii zmień rękę.'},
   kbSwing:{cat:'kb',name:'Swing oburącz',f:1.4,rest:50,tag:'pośladki, tył ud, core',m:{absL:1},cue:'Stopy trochę szerzej niż biodra. Odepchnij biodra w tył, kettlebell między udami, potem mocny wyprost bioder. Ręce tylko prowadzą, odważnik leci do wysokości klatki. Plecy proste przez cały czas.'},
   kbGoblet:{cat:'kb',name:'Przysiad goblet',f:1.0,rest:60,tag:'nogi, pośladki, core',m:{absU:1},cue:'Trzymaj kettlebell za rogi pod brodą, łokcie w dół. Zejdź biodrami w dół między pięty, kolana idą nad palcami. Klatka wysoko, pięty na ziemi.'},
-  kbDeadlift:{cat:'kb',name:'Martwy ciąg',f:1.2,rest:60,tag:'tył ud, plecy, chwyt',m:{},cue:'Kettlebell na ziemi między stopami. Biodra w tył, plecy proste, chwyć oburącz. Wstań, pchając podłogę stopami, na górze ściśnij pośladki. Opuść tym samym torem.'},
+  kbSLDL:{cat:'kb',name:'Martwy ciąg na jednej nodze',f:0.75,side:true,rest:50,tag:'tył ud, pośladki, równowaga',m:{absL:1},cue:'Kettlebell w ręce po stronie nogi, która idzie w tył. Pochyl się na jednej nodze, druga leci prosto w tył, aż tułów i noga ułożą się prawie poziomo. Plecy proste, biodra równo. Wróć, ściskając pośladek nogi podporowej.'},
   kbRow:{cat:'kb',name:'Wiosłowanie jednorącz',f:0.8,side:true,rest:45,tag:'plecy, biceps',m:{},cue:'Krok w wykroku, plecy proste i mocno pochylone. Przyciągnij kettlebell do biodra, łokieć blisko ciała, ściśnij łopatkę. Opuść do pełnego wyprostu ręki.'},
-  kbPress:{cat:'kb',name:'Wyciskanie nad głowę',f:0.55,side:true,rest:60,tag:'barki, triceps',m:{delt:2,tri:1},cue:'Kettlebell przy barku, odważnik na zewnątrz przedramienia. Napnij brzuch i pośladki, wypchnij w górę do pełnego wyprostu nad głową. Bez odchylania tułowia.'},
+  kbPress:{cat:'kb',name:'Wyciskanie z podbiciem',f:0.55,side:true,rest:60,tag:'barki, triceps',m:{delt:2,tri:1},cue:'Kettlebell przy barku, odważnik na zewnątrz przedramienia. Krótkie ugięcie kolan i od razu mocny wyprost, który pomaga wypchnąć ciężar nad głowę. Na górze ręka prosta, powoli opuść do barku. Z 25 kg to uczciwa robota dla barków.'},
   kbFloorPress:{cat:'kb',name:'Wyciskanie leżąc',f:0.75,side:true,rest:60,tag:'klatka, triceps',m:{pecU:1,pecL:2,tri:1},cue:'Połóż się na plecach, kolana ugięte. Łokieć na ziemi, przedramię pionowo, kettlebell na zewnątrz nadgarstka. Wypchnij nad klatkę, opuść, aż łokieć dotknie podłogi.'},
 };
 const PROGRAM = [
-  {name:'Klasyka — objętość',focus:'Baza pod całą klatkę. Dużo czystych, pełnych powtórzeń.',intensity:0.50,ex:['standard','wide','standard','incline'],abs:['crossCrunch','dbWoodchop','vacuum'],kb:['kbSwing','kbGoblet'],m:{pecU:2,pecL:2,tri:1,delt:1}},
-  {name:'Górna klatka',focus:'Stopy wyżej. Akcent na górę klatki i przednie barki.',intensity:0.48,ex:['decline','pike','wide','decline'],abs:['sideCrunch','dbTwist','kneeHold'],kb:['kbPress','kbDeadlift'],m:{pecU:2,pecL:1,delt:2}},
-  {name:'Tempo i kontrola',focus:'Wolno i z pauzą. Mniej powtórzeń, maksymalne napięcie.',intensity:0.40,ex:['tempo','pause','standard'],abs:['bicycle','toeTouch','sideBend'],kb:['kbFloorPress','kbRow'],m:{pecU:2,pecL:2,tri:1}},
-  {name:'Dolna klatka',focus:'Ręce na podwyższeniu. Dół klatki, wysoka objętość.',intensity:0.52,ex:['incline','standard','incline','wide'],abs:['dbHalo','crossCrunch','dbSuitcase'],kb:['kbSwing','kbDeadlift'],m:{pecL:2,pecU:1,tri:1}},
-  {name:'Środek i triceps',focus:'Wąskie ustawienia. Grubość środka klatki i triceps.',intensity:0.45,ex:['narrow','diamond','standard','narrow'],abs:['kneeHold','sideBend','dbTwist'],kb:['kbFloorPress','kbGoblet'],m:{pecU:1,pecL:1,tri:2}},
-  {name:'Siła',focus:'Naprzemienne, nogi wyżej i łucznik. Mocniej na każdą stronę.',intensity:0.45,ex:['stagger','decline','archer','standard'],abs:['bicycle','dbWoodchop','toeTouch'],kb:['kbSwing','kbPress'],m:{pecU:2,pecL:2,delt:1,tri:1}},
+  {name:'Klasyka — objętość',focus:'Baza pod całą klatkę. Dużo czystych, pełnych powtórzeń.',intensity:0.50,ex:['standard','wide','standard','incline'],abs:['crossCrunch','dbWoodchop','dbSuitcase','vacuum'],kb:['kbSwing','kbGoblet'],m:{pecU:2,pecL:2,tri:1,delt:1}},
+  {name:'Górna klatka',focus:'Stopy wyżej. Akcent na górę klatki i przednie barki.',intensity:0.48,ex:['decline','pike','wide','decline'],abs:['dbHalo','sideCrunch','dbTwist','kneeHold'],kb:['kbPress','kbSLDL'],m:{pecU:2,pecL:1,delt:2}},
+  {name:'Tempo i kontrola',focus:'Wolno i z pauzą. Mniej powtórzeń, maksymalne napięcie.',intensity:0.40,ex:['tempo','pause','standard'],abs:['bicycle','sideBend','toeTouch','dbWoodchop'],kb:['kbFloorPress','kbRow'],m:{pecU:2,pecL:2,tri:1}},
+  {name:'Dolna klatka',focus:'Ręce na podwyższeniu. Dół klatki, wysoka objętość.',intensity:0.52,ex:['incline','standard','incline','wide'],abs:['dbHalo','crossCrunch','dbSuitcase','vacuum'],kb:['kbSwing','kbSLDL'],m:{pecL:2,pecU:1,tri:1}},
+  {name:'Środek i triceps',focus:'Wąskie ustawienia. Grubość środka klatki i triceps.',intensity:0.45,ex:['narrow','diamond','standard','narrow'],abs:['kneeHold','sideBend','dbTwist','bicycle'],kb:['kbFloorPress','kbGoblet'],m:{pecU:1,pecL:1,tri:2}},
+  {name:'Siła',focus:'Naprzemienne, nogi wyżej i łucznik. Mocniej na każdą stronę.',intensity:0.45,ex:['stagger','decline','archer','standard'],abs:['sideCrunch','dbWoodchop','dbSuitcase','toeTouch'],kb:['kbSwing','kbPress'],m:{pecU:2,pecL:2,delt:1,tri:1}},
   {name:'Regeneracja aktywna',focus:'Lekko i płynnie. Krew do mięśni, jutro znów mocno.',intensity:0.35,ex:['incline','hindu','wide'],abs:['twist','vacuum'],kb:['kbGoblet'],maxSets:3,absMaxSets:2,kbMaxSets:2,m:{pecU:1,pecL:1,delt:1}}
 ];
 const MIN_REPS=3, RETEST_DAYS=14, ABS_START=12, KB_START=12;
@@ -924,6 +929,7 @@ function medalSVG(kind){
     '<path d="M44 73l11 11 22-24" fill="none" stroke="#fff" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 }
 /* liczby z animacją */
+const fmtKg=n=>String(n).replace('.',',')+' kg';
 const fmtN=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
 const cu=(n,suf)=>'<span data-cu="'+n+'"'+(suf?' data-suf="'+suf+'"':'')+'>'+fmtN(n)+(suf||'')+'</span>';
 function runCU(root){
@@ -998,7 +1004,7 @@ function saveMeta(){META.updatedAt=Date.now();rawSet(KEY_META,JSON.stringify(MET
 function saveState(){saveMeta();if(!rawSet(KEY_STATE,JSON.stringify(state)))toast('Uwaga: zapis lokalny nie działa');cloudDirty();}
 function saveHist(){saveMeta();rawSet(KEY_HIST,JSON.stringify(hist));cloudDirty();}
 function saveSession(){saveMeta();if(session)rawSet(KEY_SESSION,JSON.stringify(session));else rawDel(KEY_SESSION);cloudDirty();}
-function defaultSettings(){return {restMode:'auto',restFixedSec:60,restAdjust:0,autoRest:true,sound:true,vibe:true,wake:true,abs:true,db:true,kb:true};}
+function defaultSettings(){return {restMode:'auto',restFixedSec:60,restAdjust:0,autoRest:true,sound:true,vibe:true,wake:true,abs:true,db:true,kb:true,kbKg:25,dbKg:12.5};}
 function defaultState(){return {profile:{weight:null,age:null},max:null,tests:[],level:null,absLevel:ABS_START,kbLevel:KB_START,sessionIndex:0,lastDate:null,streak:0,retestSnooze:null,settings:defaultSettings(),created:todayStr()};}
 function normalize(){
   if(!state)state=defaultState();
@@ -1144,7 +1150,9 @@ function figDef(key){
         case 'kbDeadlift':d=ka([sideBody({P:[62,63],lean:55,Wn:[84.4,73.4]}),sideBody({P:[80,46],Wn:[81.5,44.5]})],[{to:1,t:.9,hold:.5},{to:0,t:1.1,hold:.35}],{bell:{m:'line'},mus:'glute'});break;
         case 'kbGoblet':d=ka([sideBody({wt:[7,8],hn:[3,12]}),sideBody({P:[69,66],lean:22,wt:[7,8],hn:[3,12]})],[{to:1,t:1,hold:.3},{to:0,t:.85,hold:.3}],{bell:{m:'goblet'},mus:'quad'});break;
         case 'kbRow':d=ka([sideBody({P:[72,53],lean:62,Fn:[92,86],Ff:[64,86],Wn:[95.5,65.3],Wf:[92,62]}),sideBody({P:[72,53],lean:62,Fn:[92,86],Ff:[64,86],Wn:[86,49],hn:[-6,-9],Wf:[92,62]})],[{to:1,t:.7,hold:.35},{to:0,t:.8,hold:.2}],{bell:{m:'line'},mus:'back',m3:true});break;
-        case 'kbPress':d=ka([sideBody({Wn:[86,17],hn:[4,12],Wf:[82,42],hf:[-12,10]}),sideBody({Wn:[81.5,-8.8],hn:[4,-6],Wf:[82,42],hf:[-12,10]})],[{to:1,t:.75,hold:.45},{to:0,t:.9,hold:.35}],{bell:{m:'rack'},mus:'abs',m3:true,vb:'30 -19 100 107'});break;
+        case 'kbPress':{const q={hn:[4,12],Wf:[82,42],hf:[-12,10]};
+          d=ka([sideBody(Object.assign({Wn:[86,17]},q)),sideBody(Object.assign({P:[80,50],Wn:[86,21]},q)),sideBody(Object.assign({Wn:[81.5,-8.8]},q,{hn:[4,-6]}))],[{to:1,t:.28,hold:.05},{to:2,t:.35,hold:.45},{to:0,t:.9,hold:.35}],{bell:{m:'rack'},mus:'abs',m3:true,vb:'30 -19 100 107'});break;}
+        case 'kbSLDL':d=ka([sideBody({Ff:[76,84],Wn:[81.5,44.5]}),sideBody({P:[74,50],lean:80,Fn:[80,86],Ff:[38,46],Wn:[101.6,71.6]})],[{to:1,t:1.1,hold:.4},{to:0,t:1,hold:.35}],{bell:{m:'line'},mus:'glute',vb:'24 -3 104 94'});break;
         case 'kbFloorPress':d=ka([lyingPose({W:[71,72]}),lyingPose({W:[66,53]})],[{to:1,t:.8,hold:.35},{to:0,t:1,hold:.3}],{bell:{m:'rack'},mus:'chest',m3:true,lying:true,vb:'36 40 92 50'});break;
         case 'vacuum':d=sa([standSide({hips:true,belly:4.6}),standSide({hips:true,belly:.5})],[{to:1,t:1.4,hold:3},{to:0,t:1.2,hold:.8}],{belly:true});break;
       }
@@ -1364,7 +1372,7 @@ function muscleSVG(m){
 }
 
 /* ============ PLAN ============ */
-const setsCountFor=lvl=>lvl<15?3:lvl<30?4:lvl<50?5:6;
+const setsCountFor=lvl=>lvl<15?3:4;
 const scalesFor=(n,step,floor)=>{const a=[];for(let i=0;i<n;i++)a.push(Math.max(floor||0.6,1-(step||0.09)*i));return a;};
 function pickVariant(key,lvl){const e=EX[key];return (e.unlock&&lvl<e.unlock)?e.fallback:key;}
 function buildPlan(){
@@ -1381,27 +1389,41 @@ function buildPlan(){
   if(subs.length)notes.push('Zamienniki: '+subs.join('; ')+'.');
   let abs=[];
   if(state.settings.abs){
-    const al=state.absLevel||ABS_START;let an=al<14?2:3;if(slot.absMaxSets)an=Math.min(an,slot.absMaxSets);
-    const asc=scalesFor(an,0.1,0.75);
-    abs=slot.abs.map(k0=>{const key=(!state.settings.db&&EX[k0].alt)?EX[k0].alt:k0,e=EX[key],sec=e.unit==='sec';
+    const al=state.absLevel||ABS_START;let an=al<20?3:4;if(slot.absMaxSets)an=Math.min(an,slot.absMaxSets);
+    const asc=scalesFor(an,0.06,0.8);
+    abs=slot.abs.map(k0=>{const key=(!state.settings.db&&EX[k0].alt)?EX[k0].alt:k0,e=EX[key],sec=e.unit==='sec',tg=e.eq==='db'?e.tag.replace('hantel','hantel '+fmtKg(state.settings.dbKg)):e.tag;
       const base=sec?clamp(12+al*0.9,12,75)*mult:al*e.f*mult;
-      return {key:key,cat:'abs',unit:sec?'sec':'reps',side:!!e.side,name:e.name,tag:e.tag,cue:e.cue,sets:asc.map(s=>Math.max(sec?10:5,Math.round(base*s)))};});
+      return {key:key,cat:'abs',unit:sec?'sec':'reps',side:!!e.side,name:e.name,tag:tg,cue:e.cue,sets:asc.map(s=>Math.max(sec?10:5,Math.round(base*s)))};});
   }
   let kb=[];
   if(state.settings.kb&&slot.kb){
     const kl=state.kbLevel||KB_START;let kn=kl<8?2:3;if(slot.kbMaxSets)kn=Math.min(kn,slot.kbMaxSets);const ksc=scalesFor(kn,0.08,0.8);
-    kb=slot.kb.map(key=>{const e=EX[key];return {key:key,cat:'kb',unit:'reps',side:!!e.side,name:e.name,tag:e.tag,cue:e.cue,sets:ksc.map(s=>Math.max(4,Math.round(kl*e.f*mult*s)))};});
+    kb=slot.kb.map(key=>{const e=EX[key];return {key:key,cat:'kb',unit:'reps',side:!!e.side,name:e.name,tag:e.tag+' · '+fmtKg(state.settings.kbKg),cue:e.cue,sets:ksc.map(s=>Math.max(4,Math.round(kl*e.f*mult*s)))};});
   }
+  fitHour(push.concat(abs,kb));
   const m=Object.assign({},slot.m);abs.concat(kb).forEach(it=>{const mm=EX[it.key].m||{};for(const k in mm)m[k]=Math.max(m[k]||0,mm[k]);});
   return {dayName:slot.name,focus:slot.focus,push:push,abs:abs,kb:kb,items:push.concat(abs,kb),notes:notes,deload:deload,week:week+1,dayNo:idx%PROGRAM.length+1,m:m};
+}
+const HOUR_LIMIT=58*60,BUDGET={push:28*60,abs:15*60,kb:13*60};
+function itemSecs(it){return it.sets.reduce((s,t)=>s+restFor(t,it.key)+(it.cat==='push'?t*2.3:it.unit==='sec'?t:t*(it.side?2:1)*(it.cat==='kb'?2.6:1.8)),0);}
+function fitHour(items){
+  for(let guard=0;guard<80;guard++){
+    const per={push:0,abs:0,kb:0};let total=0;items.forEach(it=>{const s=itemSecs(it);per[it.cat]+=s;total+=s;});
+    if(total<=HOUR_LIMIT)return;
+    let best=null,over=-1e9;
+    for(const c in per){const cand=items.filter(it=>it.cat===c&&it.sets.length>2);if(!cand.length)continue;if(per[c]-BUDGET[c]>over){over=per[c]-BUDGET[c];best=cand;}}
+    if(!best)return;
+    let pick=best[0];best.forEach(it=>{if(it.sets.length>=pick.sets.length)pick=it;});
+    pick.sets.pop();
+  }
 }
 function restFor(target,key){
   const s=state.settings;if(s.restMode==='fixed')return clamp(s.restFixedSec,15,300);
   const e=EX[key]||{};let base;
   if(e.cat==='kb')base=e.rest||60;
-  else if(e.cat==='abs')base=e.unit==='sec'?35:(target>20?40:30);
-  else{if(target<=6)base=120;else if(target<=10)base=90;else if(target<=16)base=75;else if(target<=25)base=60;else if(target<=35)base=50;else base=40;
-    if(['stagger','decline','diamond','narrow','pike','hindu'].includes(key))base+=10;else if(key==='tempo'||key==='pause')base+=15;else if(key==='archer')base+=25;else if(key==='incline')base-=10;}
+  else if(e.cat==='abs')base=(e.unit==='sec'||e.eq==='db')?30:25;
+  else{if(target<=6)base=90;else if(target<=10)base=75;else if(target<=16)base=60;else if(target<=25)base=50;else base=45;
+    if(['stagger','decline','diamond','narrow','pike','hindu'].includes(key))base+=5;else if(key==='tempo'||key==='pause')base+=10;else if(key==='archer')base+=15;else if(key==='incline')base-=5;}
   return clamp(Math.round((base+s.restAdjust)/5)*5,15,300);
 }
 function planTotals(plan){let pr=0,ar=0,kr=0,sets=0,secs=0;plan.items.forEach(it=>{it.sets.forEach(t=>{sets++;secs+=restFor(t,it.key);if(it.cat==='push'){pr+=t;secs+=t*2.3;}else if(it.unit==='sec'){secs+=t;}else{const r=t*(it.side?2:1);if(it.cat==='kb'){kr+=r;secs+=r*2.6;}else{ar+=r;secs+=r*1.8;}}});});return {push:pr,abs:ar,kb:kr,sets:sets,min:Math.max(1,Math.round(secs/60))};}
@@ -1755,7 +1777,7 @@ function renderSettings(){
   $('rowFixed').classList.toggle('hidden',s.restMode!=='fixed');$('rowAdjust').classList.toggle('hidden',s.restMode!=='auto');
   $('vRestFixed').textContent=s.restFixedSec+' s';$('vRestAdjust').textContent=(s.restAdjust>=0?'+':'')+s.restAdjust+' s';
   document.querySelectorAll('.toggle').forEach(b=>b.classList.toggle('on',!!s[b.dataset.tog]));
-  $('vLevel').textContent=state.level||'—';$('vAbs').textContent=state.absLevel;$('vKb').textContent=state.kbLevel;
+  $('vLevel').textContent=state.level||'—';$('vAbs').textContent=state.absLevel;$('vKb').textContent=state.kbLevel;$('vKbKg').textContent=fmtKg(s.kbKg);$('vDbKg').textContent=fmtKg(s.dbKg);
   $('pfMax').textContent='Ostatni test: '+(state.max?state.max.value+' ('+fmtDate(state.max.date)+')':'—');
   renderCloud();
 }
@@ -1859,6 +1881,8 @@ function bindStatic(){
     else if(k==='level'){if(!state.level)return;state.level=clamp(state.level+d,5,300);updateBadges();}
     else if(k==='absLevel')state.absLevel=clamp(state.absLevel+d,6,200);
     else if(k==='kbLevel')state.kbLevel=clamp(state.kbLevel+d,5,200);
+    else if(k==='kbKg'){const o=s.kbKg,n=clamp(o+d,4,48);if(n!==o){s.kbKg=n;state.kbLevel=clamp(Math.round(state.kbLevel*o/n),5,200);toast('Poziom kettlebell: '+state.kbLevel);}}
+    else if(k==='dbKg')s.dbKg=clamp(s.dbKg+d,1,40);
     saveState();renderSettings();});
   document.querySelectorAll('.toggle').forEach(b=>b.onclick=()=>{const k=b.dataset.tog;state.settings[k]=!state.settings[k];saveState();renderSettings();if(k==='sound'&&state.settings.sound){audioInit();beep(1);}if(k==='vibe')vibrate(60);});
   $('pfRetest').onclick=()=>openTest(true);
