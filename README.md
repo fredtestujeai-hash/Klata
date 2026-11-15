@@ -8,6 +8,7 @@ https://fredtestujeai-hash.github.io/Klata/
 - Trening prowadzony seria po serii, zegar przerw, odliczanie dla ćwiczeń na czas.
 - Można zakończyć trening w dowolnym momencie i zapisać zaliczone serie.
 - Animowane sylwetki ćwiczeń, mapa mięśni dnia, wykresy postępu i historia.
+- Rangi liczone z poziomu pompek, odznaki i kamienie milowe liczone z historii (bez nowych pól w danych).
 - Dane: lokalnie w przeglądarce + synchronizacja do Supabase (tabela `klata_data`, jeden wiersz).
 - Działa offline i instaluje się na ekranie głównym (manifest + service worker).
 
